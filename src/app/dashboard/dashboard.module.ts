@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+
 import { DashboardLayoutComponent } from './layouts/dashboard-layout/dashboard-layout.component';
+import { DashboardRoutingModule } from './dashboard-routing.module';
 
 
 @NgModule({
@@ -9,6 +11,7 @@ import { DashboardLayoutComponent } from './layouts/dashboard-layout/dashboard-l
   ],
   imports: [
     CommonModule,
+    DashboardRoutingModule
   ]
 })
 export class DashboardModule { }
