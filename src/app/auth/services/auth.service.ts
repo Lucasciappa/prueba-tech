@@ -41,6 +41,17 @@ export class AuthService {
 
   }
 
+  register(email: string, password: string, name: string, lastName: string, dni: string, phone: string): Observable<boolean>{
+    
+    const url  = `${ this.baseUrl }/auth/login`;
+    const body = { email, password };
+
+    this.setAuthentication( body )
+
+    return of(true);
+
+  }
+
   logout() {
     this._currentUser.set(null);
     this._authStatus.set( AuthStatus.notAuthenticated );
