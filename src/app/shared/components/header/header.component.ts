@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { CartService } from 'src/app/dashboard/service/cart.service';
+import { Component, computed, inject } from '@angular/core';
+import { AuthService } from 'src/app/auth/services/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -9,9 +9,16 @@ import { CartService } from 'src/app/dashboard/service/cart.service';
 export class HeaderComponent {
   cartItemCount: number = 0;
 
-  constructor(private cartService: CartService) {
+  private authService = inject( AuthService );
 
+  public user = computed(() => this.authService.currentUser() );
+
+  constructor() { }
+
+  onClick() {
+    this.authService.logout();
   }
+}
 
 
   // ngOnInit(): void {
@@ -20,4 +27,3 @@ export class HeaderComponent {
   //   });
   // }
 
-}
