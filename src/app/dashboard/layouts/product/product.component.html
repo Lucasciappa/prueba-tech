@@ -1,15 +1,36 @@
-<div class="productos-container">
-    <div *ngFor="let producto of productos   | paginate: { itemsPerPage: 10, currentPage: page }" class="producto">
-        <img height="100" width="150" [src]="producto.imagenes" alt="{{ producto.nombre }}" class="producto__image">
-        <h3 class="producto__nombre">{{ producto.nombre }}</h3>
-        <p class="producto__precio">{{ producto.precio | currency }}</p>
-        <button class="producto__button" (click)="addToCart(producto)">
-            Agregar
-        </button>
+<div class="main-container">
+    <h2 class="main-container__title">Productos</h2>
+
+    <select class="main-container__select" (change)="filterProducts(selectedCategory)">
+        <option class="main-container__option" value="">Todas las categorías</option>
+        <option class="main-container__option" *ngFor="let category of subcategories" [value]="category.id">{{
+            category.nombre }}</option>
+    </select>
+
+    <div class="products-container">
+
+        <div *ngIf="filteredProducts.length === 0" class="no-products-message">
+            <span>No se encontraron productos :(</span>
+        </div>
+
+        <div class="product" *ngFor="let product of pagedProducts">
+            <div class="product__image-container">
+                <img height="100" width="150" [src]="product.imagen" alt="{{ product.nombre }}"
+                    class="product__image">
+            </div>
+            <h3 class="product__name">{{ product.nombre }}</h3>
+            <p class="product__description">{{ product.subcategoria }}</p>
+            <p class="product__price">{{ product.precio | currency }}</p>
+            <button class="product__button" (click)="addToCart(product)">
+                Agregar
+            </button>
+        </div>
+
     </div>
-</div>
 
-<div class="pagination-container">
-    <pagination-controls (pageChange)="page = $event" previousLabel="Previous"></pagination-controls>
-
+    <div class="pagination-container">
+        <mat-paginator [length]="filteredProducts.length" [pageSize]="pageSize" [pageSizeOptions]="[5, 10, 25]"
+            (page)="onPageChange($event)">
+        </mat-paginator>
+    </div>
 </div>

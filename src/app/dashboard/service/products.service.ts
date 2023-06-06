@@ -8,22 +8,35 @@ export class ProductsService {
 
   private productApiUrl = 'https://static.compragamer.com/test/productos.json';
   private imageBaseUrl = 'https://compragamer.net/pga/imagenes_publicadas/compragamer_Imganen_general_';
-  private subcategoriasApiUrl = 'https://static.compragamer.com/test/subcategorias.json';
-  private cartItems: any[] = [];
-  private subcategorias: any[] = [];
-
 
   constructor(private http: HttpClient) { }
 
-  getProductos() {
+  // Obtener lista de productos desde la API
+  getProducts() {
     return this.http.get<any[]>(this.productApiUrl);
   }
 
+  // Asignar nombre de subcategoría e imagen URL a los productos
+  assignSubcategoryNameAndImageUrl(products: any[], subcategories: any[]) {
+    const subcategoriesMap: Record<string, any> = {};
 
+    // Crear un mapa de subcategorías utilizando el ID como clave
+    subcategories.forEach(subcategory => {
+      subcategoriesMap[subcategory.id] = subcategory;
+    });
 
-    getImageUrl(products: any[]) {
-      products.forEach(product => {
-        product.imagenes = this.imageBaseUrl + product.imagenes[0].nombre + '-med.jpg';
+    // Asignar nombre de subcategoría e URL de imagen a cada producto
+    products.forEach(product => {
+      const subcategory = subcategoriesMap[product.id_subcategoria];
+
+      if (subcategory) {
+        product.subcategoria = subcategory.nombre;
+      }
+
+      const imageName = product.imagenes[0].nombre;
+      const imageUrl = `${this.imageBaseUrl}${imageName}-med.jpg`;
+      product.imagen = imageUrl;
     });
   }
+
 }

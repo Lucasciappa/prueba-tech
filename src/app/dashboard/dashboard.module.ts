@@ -1,14 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+import { MatPaginatorModule } from '@angular/material/paginator';
+
 import { DashboardLayoutComponent } from './layouts/dashboard-layout/dashboard-layout.component';
 import { DashboardRoutingModule } from './dashboard-routing.module';
-
 import { MainComponent } from './layouts/main/main.component';
 import { ProductComponent } from './layouts/product/product.component';
 import { CartComponent } from './layouts/cart/cart.component';
-
-import { NgxPaginationModule } from 'ngx-pagination';
 
 
 @NgModule({
@@ -21,7 +20,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
   imports: [
     CommonModule,
     DashboardRoutingModule,
-    NgxPaginationModule
+    MatPaginatorModule
   ]
 })
 export class DashboardModule { }

@@ -1,32 +1,70 @@
-.productos-container {
+$primary-color: #050634;
+$secondary-color: #29fe0e;
+$secondary-color-hover: #0e9c0e;
+$tertiary-color: #1f41bc;
+$quaternary-color: #e5582e;
+$quinary-color: #f8b935;
+
+.main-container {
+    margin: 6em 8em;
+
+    &__title {
+        font-family: 'Codec Cold Codec Cold ExtraBold', sans-serif;
+        text-transform: uppercase;
+        font-size: 2rem;
+        font-weight: 900;
+        color: $primary-color;
+        margin: 0 0 1em 0;
+    }
+
+    &__select {
+        width: 100%;
+        height: 40px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 5px;
+        margin-bottom: 10px;
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+    }
+
+    &__option {
+        font-size: 1rem;
+        color: $primary-color;
+        font-family: 'Codec Cold Trial Light', sans-serif;
+        font-weight: 900;
+        transition: all 0.3s ease-in-out;
+    }
+}
+
+.products-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    margin: 20px;
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
     background-color: #fff;
     box-shadow: 0 0 5px #ccc;
     transition: all 0.3s ease-in-out;
+    gap: 1em;
 
     &:hover {
         box-shadow: 0 0 10px #ccc;
     }
 }
 
-.producto {
+.product {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin: 10px;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
     width: 200px;
-    height: 300px;
+    height: 400px;
     background-color: #fff;
     box-shadow: 0 0 5px #ccc;
     transition: all 0.3s ease-in-out;
@@ -35,25 +73,75 @@
     &:hover {
         box-shadow: 0 0 10px #ccc;
     }
-    &__button {
-        margin-top: auto;
-        background-color: #fff;
-        color: #000;
-        border: 1px solid #ccc;
+
+    &__name {
+        font-family: 'Codec Cold Codec Cold ExtraBold', sans-serif;
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: $primary-color;
+        margin: 0 0 1em 0;
+    }
+
+    &__image-container {
+        width: 100%;
+        height: 200px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
         border-radius: 5px;
-        padding: 5px;
-        margin: 5px;
-        cursor: pointer;
-        transition: all 0.3s ease-in-out;
-        &:hover {
-            background-color: #000;
-            color: #fff;
-        }
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
     }
 
     &__image {
-        object-fit: cover;
         width: 100%;
-        height: 150px;
+        height: 100%;
+        object-fit: contain;
     }
+
+    &__description {
+        font-family: 'Codec Cold Trial Light', sans-serif;
+        font-size: 1rem;
+        font-weight: 900;
+        color: $primary-color;
+        margin: 0 0 1em 0;
+    }
+
+    &__price {
+        font-family: 'Codec Cold Codec Cold ExtraBold', sans-serif;
+        text-transform: uppercase;
+        font-size: 1rem;
+        font-weight: 900;
+        color: $primary-color;
+        margin: 0 0 1em 0;
+    }
+
+    &__button {
+        margin-top: auto;
+        background-color: $quaternary-color;
+        background: linear-gradient(90deg, $quaternary-color 0%, $quinary-color 50%);
+        color: #fff;
+        font-weight: 600;
+        outline: none;
+        border: 1px solid #ccc;
+        border-radius: 50px;
+        padding: 10px 30px;
+        margin: 5px;
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+
+        &:hover {
+            background: linear-gradient(90deg, $quinary-color 0%, $quaternary-color 50%);
+            transform: scale(1.1);
+        }
+    }
+}
+
+.no-products-message {
+    font-family: 'Codec Cold Codec Cold ExtraBold', sans-serif;
+    font-size: 2rem;
+    font-weight: 900;
+    color: $primary-color;
+    margin: 1em 0;
 }
