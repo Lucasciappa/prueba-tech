@@ -8,6 +8,8 @@ import { MainComponent } from './layouts/main/main.component';
 import { ProductComponent } from './layouts/product/product.component';
 import { CartComponent } from './layouts/cart/cart.component';
 
+import { NgxPaginationModule } from 'ngx-pagination';
+
 
 @NgModule({
   declarations: [
@@ -18,7 +20,8 @@ import { CartComponent } from './layouts/cart/cart.component';
   ],
   imports: [
     CommonModule,
-    DashboardRoutingModule
+    DashboardRoutingModule,
+    NgxPaginationModule
   ]
 })
 export class DashboardModule { }
